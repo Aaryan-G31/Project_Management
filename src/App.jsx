@@ -108,7 +108,8 @@ function App() {
   }
 
   return (
-    <main className="flex h-screen gap-4 py-8 bg-stone-800 ">
+    <div>
+    <main className="flex h-screen gap-4 py-8 bg-base-100 ">
       <Sidebar
         onStart={handleStart}
         projects={projectsState.projects}
@@ -117,6 +118,7 @@ function App() {
       />
       {content}
     </main>
+    </div>
   );
 }
 

@@ -1,25 +1,37 @@
 import NewTask from "./NewTask.jsx";
+import { Trash2 } from "lucide-react";
 
 export default function Tasks({ tasks, onAdd, onDelete }) {
   return (
-    <section className="text-2xl font-bold text-stone-700 mb-4">
-      <h2>Task</h2>
+    <section className="mt-8">
+      <h2 className="text-2xl font-bold text-base-content mb-4">
+        Tasks
+      </h2>
+
       <NewTask onAdd={onAdd} />
+
       {tasks.length === 0 && (
-        <p className="text-stone-800 my-4">
-          This Project Does not have any Tasks yet.
-        </p>
+        <div className="mt-8 rounded-xl border border-dashed border-base-300 bg-base-200 p-8 text-center">
+          <p className="text-base-content/70">
+            This project doesn't have any tasks yet.
+          </p>
+        </div>
       )}
+
       {tasks.length > 0 && (
-        <ul className="p-4 mt-8 rounded-md  bg-stone-100">
+        <ul className="mt-8 space-y-3">
           {tasks.map((task) => (
-            <li key={task.id} className="flex justify-between my-5">
-              <span>{task.text}</span>
+            <li
+              key={task.id}
+              className="flex items-center justify-between rounded-xl bg-base-200 px-5 py-4 shadow-sm hover:shadow-md transition-all duration-200"
+            >
+              <span className="text-base-content">{task.text}</span>
+
               <button
-                className="text-stone-700 hover:text-red-500"
+                className="btn btn-sm btn-error btn-outline"
                 onClick={() => onDelete(task.id)}
               >
-                Clear
+                <Trash2 size={16} />
               </button>
             </li>
           ))}

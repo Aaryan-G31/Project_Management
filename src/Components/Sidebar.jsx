@@ -7,8 +7,8 @@ export default function Sidebar({
   selectedProjectId,
 }) {
   return (
-    <aside className="w-1/3 px-8 py-16 bg-stone-950 text-stone-100 md:w-72 rounded-r-xl">
-      <h1 className="mb-6">Projects</h1>
+    <aside className="w-1/3 px-8 py-16 bg-base-300 text-base-content md:w-72 rounded-r-xl">
+      <h1 className="text-xs uppercase tracking-widest text-base-content/50 font-semibold">Projects</h1>
 
       <div className="flex items-center justify-between">
         <Button onClick={onStart}>+New Project</Button>
@@ -16,12 +16,12 @@ export default function Sidebar({
       <ul className="mt-4">
         {projects.map((project) => {
           let cssClasses =
-            "w-full text-left px-2 py-1 runded-sm my-1 hover:text-stone-200 hover:bg-stone-800";
+            "w-full rounded-xl px-4 py-3 text-left transition-all duration-200";
 
           if (project.id === selectedProjectId) {
-            cssClasses += "bg-stone-800 text-stone-200";
+            cssClasses += "bg-base-200 text-gold font-semibold shadow-md";
           } else {
-            cssClasses += "text-stone-400";
+            cssClasses += "text-neutral-content hover:bg-base-200";
           }
           return (
             <li key={project.id}>
