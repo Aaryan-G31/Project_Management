@@ -1,7 +1,16 @@
 export default function Button({ children, ...props }) {
   return (
     <button
-      className="mt-8 px-6 py-3 rounded bg-stone-600 hover:bg-stone-500"
+      className="
+        mt-8
+        btn
+        btn-primary
+        rounded-xl
+        shadow-md
+        hover:shadow-lg
+        transition-all
+        duration-200
+      "
       {...props}
     >
       {children}

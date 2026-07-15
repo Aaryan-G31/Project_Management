@@ -1,16 +1,25 @@
 import { createPortal } from "react-dom";
-import { useRef } from "react";
 import Button from "./Button.jsx";
+import { useEffect } from "react";
 
-export default function Modal({ ref, children, buttonCaption }) {
-  const dialog = useRef();
+export default function Modal({ dialogRef, children, buttonCaption }) {
+  useEffect(() => {
+    console.log(dialogRef.current);
+  }, []);
   return createPortal(
     <dialog
-      ref={ref}
-      className="rounded-2xl p-6 shadow-2xl bg-stone-100 backdrop:bg-black/70 max-w-md w-full"
+      ref={dialogRef}
+      className="
+       fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+    w-full max-w-md rounded-2xl
+    bg-base-100 text-base-content
+    p-6 shadow-2xl
+    backdrop:bg-black/70
+      "
     >
       {children}
-      <form method="dialog" className="mt-4 text-right">
+
+      <form method="dialog" className="mt-8 flex justify-end">
         <Button>{buttonCaption}</Button>
       </form>
     </dialog>,

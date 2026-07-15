@@ -32,38 +32,49 @@ export default function NewProject({ onCancel, onSave }) {
 
   return (
     <>
-      <Modal ref={modal} buttonCaption="Close">
-        <h2 className="text-xl font-bold text-stone-800 my-4">Invalid Input</h2>
-        <p className="text-stone-600 mb-4">
-          Oops ... looks like you forgot to enter a value{" "}
-        </p>
-        <p className="text-stone-600 mb-4">
-          Please make sure you provide a valid value for every input field.
+      <Modal dialogRef={modal} buttonCaption="Close">
+        <h2 className="text-2xl font-bold mb-3">Invalid Input</h2>
+
+        <p className="mb-2">Oops! It looks like you forgot to enter a value.</p>
+
+        <p className="mb-6">
+          Please make sure every field contains a valid value.
         </p>
       </Modal>
-      <div className="w-[25rem] mt-4">
-        <menu className="flex justify-end gap-3">
-          <li>
-            <button
-              className="btn btn-ghost hover:bg-stone-600 border-0 text-stone-100"
-              onClick={onCancel}
-            >
-              Cancel
-            </button>
-          </li>
-          <li>
-            <button
-              className="btn btn-ghost hover:bg-stone-600 border-0 text-stone-100"
-              onClick={handleSave}
-            >
-              Save
-            </button>
-          </li>
-        </menu>
-        <div>
-          <Input ref={title} type="text" label="Title" />
-          <Input ref={description} textarea label="Description" />
-          <Input ref={dueDate} type="date" label="Due Date" />
+
+      <div className="flex-1 flex justify-center items-start px-6 py-10">
+        <div className="card bg-base-200 shadow-xl w-full max-w-2xl">
+          <div className="card-body">
+            <div className="mb-6">
+              <h1 className="text-3xl font-bold text-base-content">
+                Create New Project
+              </h1>
+
+              <p className="text-base-content/60 mt-2">
+                Fill in the details below to create your project.
+              </p>
+            </div>
+
+            <menu className="flex justify-end gap-3 mb-8">
+              <li>
+                <button className="btn btn-ghost" onClick={onCancel}>
+                  Cancel
+                </button>
+              </li>
+
+              <li>
+                <button className="btn btn-primary" onClick={handleSave}>
+                  Save Project
+                </button>
+              </li>
+            </menu>
+
+            <div className="space-y-5">
+              <Input ref={title} type="text" label="Title" />
+              <Input ref={description} textarea label="Description" />
+              <Input ref={dueDate} type="date" label="Due Date" />
+            </div>
+          </div>
         </div>
       </div>
     </>
