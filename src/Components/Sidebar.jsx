@@ -1,17 +1,15 @@
 import Button from "./Button.jsx";
+import { ProjectContext } from "../Projects/Project-Context.jsx";
+import { useContext } from "react";
 
-export default function Sidebar({
-  onStart,
-  projects,
-  onSelectProject,
-  selectedProjectId,
-}) {
+export default function Sidebar() {
+  const {handleStart, projects , selectedProjectId , handleSelectProject}= useContext(ProjectContext);
   return (
     <aside className="w-1/3 px-8 py-16 bg-base-300 text-base-content md:w-72 rounded-r-xl">
       <h1 className="text-xs uppercase tracking-widest text-base-content/50 font-semibold">Projects</h1>
 
       <div className="flex items-center justify-between">
-        <Button onClick={onStart}>+New Project</Button>
+        <Button onClick={handleStart}>+New Project</Button>
       </div>
       <ul className="mt-4">
         {projects.map((project) => {
@@ -27,7 +25,7 @@ export default function Sidebar({
             <li key={project.id}>
               <button
                 className={cssClasses}
-                onClick={() => onSelectProject(project.id)}
+                onClick={() => handleSelectProject(project.id)}
               >
                 {project.title}
               </button>
